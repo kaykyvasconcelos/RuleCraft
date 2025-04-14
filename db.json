@@ -1,0 +1,40 @@
+{
+  "rules": [
+    {
+      "id": "b1cd",
+      "title": {
+        "id": "a1a0e2cc-8d65-43df-9437-eccc9c2de197",
+        "nome": "vgkbh",
+        "tipo": "real",
+        "valor": 9
+      }
+    },
+    {
+      "id": "8fe7",
+      "title": {
+        "id": "619bf010-6626-4d1e-84a9-942f5079faa3",
+        "nome": "kayky",
+        "tipo": "percentual",
+        "valor": 14
+      }
+    },
+    {
+      "id": "32a1",
+      "title": {
+        "id": "2650b035-6321-4292-a4be-09e03059a483",
+        "nome": "rafael",
+        "tipo": "real",
+        "valor": 50
+      }
+    },
+    {
+      "id": "6189",
+      "title": {
+        "id": "72a54f9e-73af-488d-ac9d-6d3bc420f919",
+        "nome": "samara ",
+        "tipo": "real",
+        "valor": 83
+      }
+    }
+  ]
+}
