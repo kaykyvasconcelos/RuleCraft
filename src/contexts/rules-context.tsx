@@ -1,11 +1,11 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { Rule } from "../types";
 
 const API_URL = "http://localhost:3001/rules";
 
 interface RulesContextProps {
   rules: Rule[];
-  addRule: (title: string, description: string) => void;
+  addRule: (rule: Rule) => void;
   updateRule: (rule: Rule) => void;
   deleteRule: (id: string) => void;
 }
@@ -15,7 +15,6 @@ const RulesContext = createContext<RulesContextProps | undefined>(undefined);
 export const RulesProvider = ({ children }: { children: ReactNode }) => {
   const [rules, setRules] = useState<Rule[]>([]);
 
-  // Carrega as regras ao iniciar
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
@@ -23,13 +22,11 @@ export const RulesProvider = ({ children }: { children: ReactNode }) => {
       .catch(err => console.error("Erro ao carregar regras:", err));
   }, []);
 
-  const addRule = (title: string, description: string) => {
-    const newRule = { title, description };
-
+  const addRule = (rule: Rule) => {
     fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newRule),
+      body: JSON.stringify(rule),
     })
       .then(res => res.json())
       .then(data => setRules(prev => [...prev, data]))

@@ -1,17 +1,19 @@
-// src/App.tsx
+import React, { useState } from "react";
+import { RulesProvider } from "./contexts/rules-context";
+import { RuleForm } from "./components/RuleForm";
+import { RuleList } from "./components/RuleList";
+import { Login } from "./components/Login";
+import { Rule } from "./types"; // certifique-se de importar isso no topo
 
-import React, { useState } from 'react';
-import { Rule } from './types';
-import { RulesProvider } from './contexts/rules-context';
-import { RuleForm } from './components/RuleForm';
-import { RuleList } from './components/RuleList';
+const App = () => {
+  const [selectedRule, setSelectedRule] = useState<Rule | undefined>(undefined);  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-const App: React.FC = () => {
-  const [selectedRule, setSelectedRule] = useState<Rule | undefined>(undefined);
+  const handleFinish = () => setSelectedRule(undefined);
 
-  const handleFinish = () => {
-    setSelectedRule(undefined);
-  };
+  if (!isAuthenticated) {
+    return <Login onLoginSuccess={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <RulesProvider>
